@@ -11783,7 +11783,7 @@ class TemplatesPlugin extends s$1 {
                     ><mwc-icon
                       ><span class="material-symbols-outlined">
                         ${sDOorDa.getAttribute('type')
-                ? 'expand_circle_right'
+                ? 'navigate_next'
                 : 'last_page'}
                       </span></mwc-icon
                     ></mwc-list-item
