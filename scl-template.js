@@ -11403,6 +11403,14 @@ ActionFilteredList = __decorate([
     e$6('action-filtered-list')
 ], ActionFilteredList);
 
+function newEditWizardEvent(element, subWizard, eventInitDict) {
+    return new CustomEvent('oscd-edit-wizard-request', {
+        bubbles: true,
+        composed: true,
+        ...eventInitDict,
+        detail: { element, subWizard, ...eventInitDict === null || eventInitDict === void 0 ? void 0 : eventInitDict.detail },
+    });
+}
 /** Common `CSS` styles used by DataTypeTemplate subeditors */
 const styles = i$5 `
   :host(.moving) section {
@@ -11662,6 +11670,9 @@ class TemplatesPlugin extends s$1 {
             return x `<mwc-list-item
                     value="${(_a = dAorBda.getAttribute('id')) !== null && _a !== void 0 ? _a : ''}"
                     tabindex="0"
+                    @request-selected="${() => {
+                this.dispatchEvent(newEditWizardEvent(dAorBda));
+            }}"
                   >
                     <span>${dAorBda.getAttribute('name')}</span>
                   </mwc-list-item>
@@ -11772,6 +11783,10 @@ class TemplatesPlugin extends s$1 {
             return x `<mwc-list-item
                     value="${(_a = sDOorDa.getAttribute('id')) !== null && _a !== void 0 ? _a : ''}"
                     tabindex="0"
+                    openEditWizard():
+                    @request-selected="${() => {
+                this.dispatchEvent(newEditWizardEvent(sDOorDa));
+            }}"
                   >
                     <span>${sDOorDa.getAttribute('name')}</span>
                   </mwc-list-item>
@@ -11874,6 +11889,9 @@ class TemplatesPlugin extends s$1 {
             ${Array.from((_h = (_g = this.selectedLNodeType) === null || _g === void 0 ? void 0 : _g.querySelectorAll(':scope > DO')) !== null && _h !== void 0 ? _h : []).map(dO => x `<mwc-list-item
                     value="#${dO.getAttribute('id')}"
                     tabindex="0"
+                    @request-selected="${() => {
+            this.dispatchEvent(newEditWizardEvent(dO));
+        }}"
                   >
                     <span>${dO.getAttribute('name')}</span></mwc-list-item
                   ><mwc-list-item
