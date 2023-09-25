@@ -14048,7 +14048,7 @@ class TemplatesPlugin extends s$1 {
             @click="${() => this.dispatchCreateEvent(this.selectedLNodeType, 'DO')}"
           ></mwc-button>
         </div>
-        <action-filtered-list @action="${this.dispatchEditEvent}">
+        <action-filtered-list @selected="${this.dispatchEditEvent}">
           ${Array.from((_h = (_g = this.selectedLNodeType) === null || _g === void 0 ? void 0 : _g.querySelectorAll(':scope > DO')) !== null && _h !== void 0 ? _h : []).map(dO => x `<mwc-list-item value="DO:${identity(dO)}" tabindex="0">
                   <span>${dO.getAttribute('name')}</span></mwc-list-item
                 ><mwc-list-item
